@@ -32,7 +32,7 @@ class FirestoreCache(ICache):
     def configure(cls, settings):
         kwargs = super().configure(settings)
         kwargs["db"] = firestore.Client()
-        kwargs["collection_name"] = settings.pop("db.collection_name")
+        kwargs["collection_name"] = settings.pop("db.collection_name", "pypicloud_packages")
         return kwargs
 
     def fetch(self, filename):
