@@ -12,7 +12,7 @@ def document_to_package(snap):
         doc["name"],
         doc["version"],
         snap.id,
-        doc["last_modified"],
+        doc["last_modified"].replace(tzinfo=None),
         doc["summary"],
         **doc["metadata"]
     )
