@@ -195,6 +195,33 @@ extras = ["grpc"]
 version = ">=1.14.0,<2.0.0dev"
 
 [[package]]
+category = "dev"
+description = "Google Cloud Storage API client library"
+name = "google-cloud-storage"
+optional = false
+python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*"
+version = "1.29.0"
+
+[package.dependencies]
+google-auth = ">=1.11.0,<2.0dev"
+google-cloud-core = ">=1.2.0,<2.0dev"
+google-resumable-media = ">=0.5.0,<0.6dev"
+
+[[package]]
+category = "dev"
+description = "Utilities for Google Media Downloads and Resumable Uploads"
+name = "google-resumable-media"
+optional = false
+python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*"
+version = "0.5.1"
+
+[package.dependencies]
+six = "*"
+
+[package.extras]
+requests = ["requests (>=2.18.0,<3.0.0dev)"]
+
+[[package]]
 category = "main"
 description = "Common protobufs used in Google APIs"
 name = "googleapis-common-protos"
@@ -391,6 +418,10 @@ pyramid-tm = "*"
 requests = "*"
 transaction = "*"
 "zope.sqlalchemy" = "*"
+
+[package.dependencies.google-cloud-storage]
+optional = true
+version = ">=1.10.0"
 
 [package.dependencies.waitress]
 optional = true
@@ -723,7 +754,7 @@ transaction = ">=1.6.0"
 test = ["zope.testing"]
 
 [metadata]
-content-hash = "c424bb198c8f1fa56d23de31d81c3a7a4f92a4a452b6963a4c870b4f978b79c1"
+content-hash = "02280e1013b9e2f6642c99b0eec6b7d142a3a98d8e38bec4bf1b434433e5204e"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -829,6 +860,14 @@ google-cloud-core = [
 google-cloud-firestore = [
     {file = "google-cloud-firestore-1.8.1.tar.gz", hash = "sha256:dfe02fc0a77a4e28144c46d441553352d81498ffd8f49906b57342d06c7f5b54"},
     {file = "google_cloud_firestore-1.8.1-py2.py3-none-any.whl", hash = "sha256:0b6ed152cf782e5399f5d7ccb19383ae84da883867d7151bc7ae1dc1cc2ab871"},
+]
+google-cloud-storage = [
+    {file = "google-cloud-storage-1.29.0.tar.gz", hash = "sha256:15c8ab11d17e3a32c154662bb001c2097515799f3fd4947a10b1fceb7b6e9a1e"},
+    {file = "google_cloud_storage-1.29.0-py2.py3-none-any.whl", hash = "sha256:958b4ec0ec0104ea2d436606a4d39eb6c5cf719b8b69d1676de75294bf02de3e"},
+]
+google-resumable-media = [
+    {file = "google-resumable-media-0.5.1.tar.gz", hash = "sha256:97155236971970382b738921f978a6f86a7b5a0b0311703d991e065d3cb55773"},
+    {file = "google_resumable_media-0.5.1-py2.py3-none-any.whl", hash = "sha256:cdc64378dc9a7a7bf963a8d0c944c99b549dc0c195a9acbf1fcd465f380b9002"},
 ]
 googleapis-common-protos = [
     {file = "googleapis-common-protos-1.52.0.tar.gz", hash = "sha256:560716c807117394da12cecb0a54da5a451b5cf9866f1d37e9a5e2329a665351"},

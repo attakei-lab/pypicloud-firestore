@@ -14,7 +14,7 @@ Install
 .. code-block::
 
    $ pip install pypicloud
-   $ pip install https://github.com/attakei-sandbox/pypicloud-firestore/releases/download/v0.1.0/pypicloud_firestore-0.1.0-py3-none-any.whl
+   $ pip install https://github.com/attakei-sandbox/pypicloud-firestore/releases/download/v0.1.1/pypicloud_firestore-0.1.1-py3-none-any.whl
 
 Configuration
 -------------
