@@ -6,6 +6,18 @@ from pypicloud.models import Package
 __version__ = "0.1.0"
 
 
+def document_to_package(snap):
+    doc = snap.to_dict()
+    return Package(
+        doc["name"],
+        doc["version"],
+        snap.id,
+        doc["last_modified"],
+        doc["summary"],
+        **doc["metadata"]
+    )
+
+
 class FirestoreCache(ICache):
     """
         Caching database using Cloud Firestore
@@ -29,33 +41,16 @@ class FirestoreCache(ICache):
             snap = doc_ref.get()
             if not snap.exists:
                 return None
-            doc = snap.to_dict()
-            return Package(
-                doc["name"],
-                doc["version"],
-                filename,
-                doc["last_modified"],
-                doc["summary"],
-                **doc["metadata"],
-            )
+            return document_to_package(snap)
         except exceptions.NotFound:
             return None
 
     def all(self, name):
         query = self.db.collection(self.collection_name).where("name", "==", name)
-        pkgs = []
-        for snap in query.stream():
-            filename = snap.id
-            doc = snap.to_dict()
-            pkgs.append(Package(
-                doc["name"],
-                doc["version"],
-                filename,
-                doc["last_modified"],
-                doc["summary"],
-                **doc["metadata"],
-            ))
-        return pkgs
+        return [
+            document_to_package(snap)
+            for snap in query.stream()
+        ]
 
     def distinct(self):
         query = self.db.collection(self.collection_name)
