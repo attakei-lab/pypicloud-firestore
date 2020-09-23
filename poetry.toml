@@ -1,2 +1,5 @@
 [virtualenvs]
 in-project = true
+
+[repositories.vendor]
+url = "https://pypi.attakei.net/simple/"
